@@ -1,10 +1,8 @@
 export const SITE = {
-  title: "Astro Design System",
-  description: "Astro theme to build your design system fast.",
-  defaultLanguage: "en_US",
-  twitter: "@jordienr",
-  github: "jordienr",
-  linkedin: "linkedinUsername",
+  title: "设计模式",
+  description: "设计模式是软件开发的基本组成部分，因为它们为软件设计中经常出现的问题提供了典型的解决方案。",
+  defaultLanguage: "cn",
+  github: "zackdk",
 };
 
 export const OPEN_GRAPH = {

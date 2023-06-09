@@ -1,0 +1,117 @@
+---
+import MenuItem from "../icons/MenuItem.astro";
+import { upperToHyphen } from "../utils/index";
+
+const MenuList = [
+    {
+        title: "Design Patterns",
+        items: [
+            "Introduction",
+            "Singleton Pattern",
+            "Proxy Pattern",
+            "Provider Pattern",
+            "Prototype Pattern",
+            "Container/Presentational Pattern",
+            "Observer Pattern",
+            "Module Pattern",
+            "Mixin Pattern",
+            "Mediator/Middleware Pattern",
+            "HOC Pattern",
+            "Render Props Pattern",
+            "Hooks Pattern",
+            "Flyweight Pattern",
+            "Factory Pattern",
+            "Compound Pattern",
+            "Command Pattern",
+        ],
+    },
+    {
+        title: "Rendering Patterns",
+        items: [
+            "Rendering Patterns Introduction",
+            "Overview of React.js",
+            "Client-side Rendering",
+            "Server-side Rendering",
+            "Static Rendering",
+            "Incremental Static Generation",
+            "Progressive Hydration",
+            "Streaming Server-Side Rendering",
+            "React Server Components",
+            "Selective Hydration",
+            "Islands Architecture",
+            "Animating View Transitions",
+        ],
+    },
+    {
+        title: "Performance Patterns",
+        items: [
+            "Optimize your loading sequence",
+            "Static Import",
+            "Dynamic Import",
+            "Import On Visibility",
+            "Import On Interaction",
+            "Route Based Splitting",
+            "Bundle Splitting",
+            "PRPL Pattern",
+            "Tree Shaking",
+            "Preload",
+            "Prefetch",
+            "Optimize loading third-parties",
+            "List Virtualization",
+            "Compressing JavaScript",
+        ],
+    },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<nav class="md:block">
+    <div class="font-medium -my-2">
+        {
+            MenuList.map((menu) => {
+                return (
+                    <ul class="py-4">
+                        <li>
+                            <span class="flex items-center hover:underline">
+                                <div class="flex items-center flex-grow">
+                                    <>
+                                        <MenuItem />
+                                        <span class="text-neutral-900 dark:text-neutral-100">
+                                            {menu.title}
+                                        </span>
+                                    </>
+                                </div>
+                            </span>
+                        </li>
+                        <li>
+                            <ul class="font-normal -mb-1 mt-1 ml-2">
+                                {menu.items.map((item) => {
+                                    const selectedClass = pathname.includes(
+                                        upperToHyphen(item)
+                                    )
+                                        ? "bg-zinc-100 border-zinc-700"
+                                        : "";
+                                    return (
+                                        <li
+                                            class={`${selectedClass} cursor-pointer py-1 text-sm pl-5 border-l border-neutral-300 dark:border-neutral-700 dark:hover:bg-neutral-800/50 false`}
+                                        >
+                                            <a
+                                                class="text-neutral-600 hover:underline dark:text-neutral-300"
+                                                href={`/posts/${upperToHyphen(
+                                                    item
+                                                )}`}
+                                            >
+                                                {item}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </li>
+                    </ul>
+                );
+            })
+        }
+    </div>
+</nav>

@@ -1,0 +1,64 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<section class="bg-white dark:bg-neutral-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="pt-32 pb-12 md:pt-40 md:pb-20">
+            <div class="max-w-4xl mx-auto lg:max-w-none">
+                <article>
+                    <header class="max-w-4xl mx-auto mb-20">
+                        <h1
+                            class="h1 text-center text-6xl md:text-7xl font-extrabold leading-tighter tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-200 to-blue-500 break-words"
+                            style="word-break: break-word;"
+                        >
+                            {title}
+                        </h1>
+                        <p
+                            class="text-2xl text-center text-neutral-900 mb-8 dark:text-neutral-100"
+                        >
+                            {description}
+                        </p>
+                    </header>
+                    <div class="lg:flex lg:justify-between">
+                        <aside
+                            class="hidden lg:block relative my-12 md:my-0 md:w-64 md:mr-12 lg:mr-20 md:flex-shrink-0"
+                        >
+                            <slot name="aside-menu" />
+                        </aside>
+                        <div class="relative block overflow-hidden px-3">
+                            <hr
+                                class="w-16 h-px pt-px bg-neutral-200 border-0 mb-6 dark:bg-neutral-700"
+                            />
+                            <div
+                                class="prose max-w-none text-base text-neutral-800 inter"
+                            >
+                                <slot name="post-content" />
+                            </div>
+                            <div
+                                class="my-8 mx-auto max-w-xs flex sm:justify-center"
+                            >
+                                <a
+                                    class="btn text-white bg-neutral-900 hover:bg-neutral-800 w-full mb-4 w-auto mb-0 mr-8 dark:bg-neutral-700 hover:bg-neutral-600"
+                                    title="compression"
+                                    href="/posts/compression">Previous</a
+                                >
+                                <div style="width:64px"></div>
+                                <a
+                                    class="btn text-white bg-neutral-900 hover:bg-neutral-800 w-full mb-4 w-auto mb-0 mr-8 dark:bg-neutral-700 hover:bg-neutral-600"
+                                    title="singleton-pattern"
+                                    href="/posts/singleton-pattern">Next</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

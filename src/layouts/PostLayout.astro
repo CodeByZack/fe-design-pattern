@@ -1,0 +1,51 @@
+---
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import Header from "../components/Header/Header.astro";
+import * as CONFIG from "../config";
+import "../styles/main.scss";
+import PostSection from "../components/PostSection.astro";
+import PostSiderMenu from "../components/PostSiderMenu.astro";
+
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+	// 在这里定义 frontmatter 属性
+	title: string;
+	description: string;
+	date: string;
+}>;
+
+const { frontmatter } = Astro.props;
+const currentPage = new URL(Astro.request.url).pathname;
+---
+
+<html lang="en-us" class="initial">
+	<head>
+		<HeadCommon />
+		<HeadSEO
+			title={frontmatter.title}
+			description={frontmatter.description}
+			canonicalURL={Astro.url}
+		/>
+		<title>
+			{
+				frontmatter.title
+					? `${frontmatter.title} 🚀 ${CONFIG.SITE.title}`
+					: CONFIG.SITE.title
+			}
+		</title>
+	</head>
+
+	<body class="bg-slate-100">
+		<Header currentPage={currentPage} />
+
+		<PostSection
+			title={frontmatter.title}
+			description={frontmatter.description}
+		>
+			<PostSiderMenu slot="aside-menu" />
+			<slot slot="post-content" />
+		</PostSection>
+	</body>
+</html>
