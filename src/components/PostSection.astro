@@ -1,10 +1,13 @@
 ---
+import { getNextAndPrev } from "../const/MenuList";
 interface Props {
     title: string;
     description: string;
 }
 
 const { title, description } = Astro.props;
+
+const { next, prev } = getNextAndPrev(Astro.url.pathname);
 ---
 
 <section class="bg-white dark:bg-neutral-900">
@@ -46,13 +49,13 @@ const { title, description } = Astro.props;
                                 <a
                                     class="btn text-white bg-neutral-900 hover:bg-neutral-800 w-full mb-4 w-auto mb-0 mr-8 dark:bg-neutral-700 hover:bg-neutral-600"
                                     title="compression"
-                                    href="/posts/compression">Previous</a
+                                    href={prev}>Previous</a
                                 >
                                 <div style="width:64px"></div>
                                 <a
                                     class="btn text-white bg-neutral-900 hover:bg-neutral-800 w-full mb-4 w-auto mb-0 mr-8 dark:bg-neutral-700 hover:bg-neutral-600"
                                     title="singleton-pattern"
-                                    href="/posts/singleton-pattern">Next</a
+                                    href={next}>Next</a
                                 >
                             </div>
                         </div>

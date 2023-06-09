@@ -1,67 +1,8 @@
 ---
+import { MenuList } from "../const/MenuList";
 import MenuItem from "../icons/MenuItem.astro";
 import { upperToHyphen } from "../utils/index";
 
-const MenuList = [
-    {
-        title: "Design Patterns",
-        items: [
-            "Introduction",
-            "Singleton Pattern",
-            "Proxy Pattern",
-            "Provider Pattern",
-            "Prototype Pattern",
-            "Container/Presentational Pattern",
-            "Observer Pattern",
-            "Module Pattern",
-            "Mixin Pattern",
-            "Mediator/Middleware Pattern",
-            "HOC Pattern",
-            "Render Props Pattern",
-            "Hooks Pattern",
-            "Flyweight Pattern",
-            "Factory Pattern",
-            "Compound Pattern",
-            "Command Pattern",
-        ],
-    },
-    {
-        title: "Rendering Patterns",
-        items: [
-            "Rendering Patterns Introduction",
-            "Overview of React.js",
-            "Client-side Rendering",
-            "Server-side Rendering",
-            "Static Rendering",
-            "Incremental Static Generation",
-            "Progressive Hydration",
-            "Streaming Server-Side Rendering",
-            "React Server Components",
-            "Selective Hydration",
-            "Islands Architecture",
-            "Animating View Transitions",
-        ],
-    },
-    {
-        title: "Performance Patterns",
-        items: [
-            "Optimize your loading sequence",
-            "Static Import",
-            "Dynamic Import",
-            "Import On Visibility",
-            "Import On Interaction",
-            "Route Based Splitting",
-            "Bundle Splitting",
-            "PRPL Pattern",
-            "Tree Shaking",
-            "Preload",
-            "Prefetch",
-            "Optimize loading third-parties",
-            "List Virtualization",
-            "Compressing JavaScript",
-        ],
-    },
-];
 
 const pathname = Astro.url.pathname;
 ---
