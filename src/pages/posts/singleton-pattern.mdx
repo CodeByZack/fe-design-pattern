@@ -5,7 +5,10 @@ description: "在我们的应用程序中共享一个全局实例"
 ---
 
 import Video from '../../components/Video.astro';
+import Editor from '../../components/Editor.tsx';
 
+
+<Editor client:idle />
 
 单例是只实例化一次，并且可以全局访问的类。这个单一实例可以在我们的整个应用程序中共享，这使得单例非常适合管理应用程序中的全局状态。
 

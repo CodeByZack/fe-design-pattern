@@ -2,8 +2,11 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "esnext",
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "moduleResolution": "node",
-  "types": ["vite/client"]
+  "types": [
+    "vite/client"
+  ]
 }
