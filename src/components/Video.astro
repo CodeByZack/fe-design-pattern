@@ -1,0 +1,10 @@
+---
+interface Props extends astroHTML.JSX.VideoHTMLAttributes {
+
+}
+
+const { src, autoplay, controls } = Astro.props;
+---
+
+
+<video src={src} autoplay={autoplay} controls={controls} />
