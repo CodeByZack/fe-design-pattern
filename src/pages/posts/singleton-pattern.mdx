@@ -4,11 +4,13 @@ title: "单列模式"
 description: "在我们的应用程序中共享一个全局实例"
 ---
 
-import Video from '../../components/Video.astro';
-import Editor from '../../components/Editor.tsx';
+import Video from '@components/Video.astro';
+import Editor from '@components/Editor.tsx';
+import SampleCodes1 from '@sample-codes/singleton-pattern/1/data.ts';
+import SampleCodes2 from '@sample-codes/singleton-pattern/2/data.ts';
+import SampleCodes3 from '@sample-codes/singleton-pattern/3/data.ts';
+import SampleCodes4 from '@sample-codes/singleton-pattern/4/data.ts';
 
-
-<Editor client:idle />
 
 单例是只实例化一次，并且可以全局访问的类。这个单一实例可以在我们的整个应用程序中共享，这使得单例非常适合管理应用程序中的全局状态。
 
@@ -156,12 +158,7 @@ export default singletonCounter;
 - `redButton.js`：引入 `Counter` ，将 `Counter` 的 `increment` 方法作为事件监听器添加到**红色按钮**上，并且调用 `getCount` 方法打印 `counter` 的当前值
 - `blueButton.js`：引入 `Counter`，将 `Counter` 的 `increment` 方法作为事件监听器添加到**蓝色按钮**上，并且调用 `getCount` 方法打印 `counter` 的当前值
 
-<iframe src="https://codesandbox.io/embed/singleton-1-forked-49vsv6?expanddevtools=1&fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="singleton-1"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<Editor client:idle files={SampleCodes1} />
 
 `blueButton.js` 和 `redButton.js` 都从 `counter.js` 导入了**相同的**实例。此实例在两个文件中都作为 `Counter` 变量导入。
 
@@ -187,12 +184,7 @@ export default singletonCounter;
 - 一个 `increment` 方法，用来给 `count` 的值加一
 - 一个 `decrement` 方法，用来给 `count` 的值减一
 
-<iframe src="https://codesandbox.io/embed/singleton-2-forked-9r299t?expanddevtools=1&fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="singleton-2"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<Editor client:idle files={SampleCodes2} />
 
 由于对象是通过引用传递的，`redButton.js` 和 `blueButton.js` 都导入了对同一个 `counter` 对象的引用。在这两个文件中修改 `count` 的值都会修改 `counter` 的值，这在两个文件中都是可见的。
 测试
@@ -201,23 +193,13 @@ export default singletonCounter;
 
 测试依赖单例的代码可能会很棘手。由于我们不能每次都创建新的实例，所以所有的测试都依赖于对上一次测试的全局实例的修改。在这种情况下，测试的顺序很重要，一个小的修改可能会导致整个测试套件失败。测试后，我们需要重置整个实例，以重置测试所做的修改。
 
-<iframe src="https://codesandbox.io/embed/singleton-3-forked-cyxv5l?expanddevtools=1&fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="singleton-3 "
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<Editor testMode client:idle files={SampleCodes3} />
 
 #### 隐藏依赖
 
 当导入另一个模块时，在示例中为 `superCounter.js`，模块导入了实例，虽然可能并不明显。在其他文件中，例如示例中的 `index.js`，我们导入实例并调用了其方法。这样，如果我们不小心修改了实例中的值。这可能会导致意外行为，因为在整个应用程序中，实例是共享的，所以会影响到其它引用实例的地方。
 
-<iframe src="https://codesandbox.io/embed/singleton-3-forked-62cqjx?expanddevtools=1&fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="singleton-3"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<Editor client:idle files={SampleCodes4} />
 
 #### 全局行为
 
