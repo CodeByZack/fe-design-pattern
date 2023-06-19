@@ -1,68 +1,47 @@
----
-title: Introduction
-description: Docs intro
-layout: ../../layouts/MainLayout.astro
----
+# FE Design Pattern
 
-# Astro Design System Theme
+[patterns.dev](https://www.patterns.dev/) 是一个介绍前端设计模式的网站。
 
-Astro Design System is the easiest way to start your our design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
+本项目所有内容 copy 自上述项目，只不过翻译成中文了。请尽量阅读英文原文。
+## 技术栈
 
-## Getting started
+项目使用了 Astro + MDX + Codesandbox + Tailwindcss 进行搭建。
 
-### Adding new sections
+## 目录结构
 
-Although it's not required, you can create folders for new sections.
+`src/components` : 存放一些通用组件，如页面上的代码编辑器等
 
-To show the section on the left side navigation, add it to the navigation config file at `src/config.ts`.
+`src/pages/posts` : 存放 MDX 文件，一个文件就是一篇文章
 
-Example:
+`src/pages/layouts` : 存放页面的布局文件
 
-```js
-export const SIDEBAR = [
-    { text: "Core", header: true },
-    { text: "Introduction", link: "/core/introduction" },
-    ...,
-    { text: "Components", header: true },
-    { text: "Buttons", link: "/components/buttons" },
-    ...,
-    { text: "New section", header: true },
-    { text: "New component", link: "/new-section/new-component.md" },
-];
+`src/pages/sample-codes` : 存放页面上使用的样例代码，用于编辑器展示，使用
+
+`public/videos` : 存放页面上使用的视频文件
+
 ```
 
-### Adding new pages
+### 添加新文章
 
-To add new pages just create an .astro or markdown file in `src/pages/[section]/my-page.md`. Remember to add it to the navigation config in `src/config.ts` so it shows up in the left side navigation.
+在 `src/const/MenuList.ts` 找到还没翻译的文章，然后
 
-You're free to organize the pages however you want.
+在 `src/pages/posts` 下添加 `${postname}.mdx` 文件。文件名需与 `MenuList` 里的一致， 然后在头部添加
 
-### Customizing Core section (colors, typography, shadows...)
+```markdown
+---
+layout: ../../layouts/PostLayout.astro
+title: "文章名字"
+description: "文章描述"
+---
+```
 
-If you want to customize the default colors, typography or shadows you can find the configuration file at `src/config/design.config.ts`.
+然后开始进行翻译。
 
-Feel free to add new pages to the Core section
+代码编辑器可以使用 `<Editor client:idle files={SampleCodes3} />`
 
-### Customizing the page layout
+视频块可以使用 `<Video controls="" autoPlay src="/videos/proxy-1.webm" />`
 
-You can find the css for the pages in `src/styles/content.scss`.
 
-### Adding your components
+### 其它
 
-Astro is great for design systems because it allows you to import components from different frameworks like react, vue or svelte.
-
-To get started check how the `MainButton` component is used in the `src/pages/en/buttons.md` file.
-
-You can import your component library or create your own and document it easily.
-
-### `.component-preview` utility
-
-There's a class called `.component-preview` that you can use to wrap your component in a grid, and it will look like this:
-
-<div class="component-preview">
-    <button class="text-white bg-blue-500 px-4 py-2 rounded-md">Your component</button>
-</div>
-
-### Have fun!
-
-Astro Design System template was made by **[@jordienr](https://twitter.com/jordienr)** for personal and commercial use.
+个人能力有限，如有错误，欢迎指出。
