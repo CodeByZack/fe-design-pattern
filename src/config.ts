@@ -2,7 +2,7 @@ export const SITE = {
   title: "设计模式",
   description: "设计模式是软件开发的基本组成部分，因为它们为软件设计中经常出现的问题提供了典型的解决方案。",
   defaultLanguage: "cn",
-  github: "zackdk/fe-design-pattern",
+  github: "codebyzack/fe-design-pattern",
 };
 
 export const OPEN_GRAPH = {
