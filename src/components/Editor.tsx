@@ -2,7 +2,7 @@ import { SandpackProvider, SandpackLayout, SandpackFileExplorer, SandpackCodeEdi
 import { useMemo } from "react";
 
 const Editor = (props) => {
-  const { files, testMode } = props;
+  const { files, testMode, hidePreview } = props;
 
   const innerFiles = useMemo(() => {
     if (testMode) {
@@ -29,7 +29,7 @@ const Editor = (props) => {
       }}
     >
       <SandpackLayout>
-        {testMode ? "" : <SandpackPreview />}
+        {(testMode || hidePreview) ? "" : <SandpackPreview />}
         {testMode ? <SandpackTests /> : <SandpackConsole className="not-prose" />}
       </SandpackLayout>
       <SandpackLayout >
