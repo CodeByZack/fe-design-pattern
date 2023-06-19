@@ -199,7 +199,7 @@ export default singletonCounter;
 
 当导入另一个模块时，在示例中为 `superCounter.js`，模块导入了实例，虽然可能并不明显。在其他文件中，例如示例中的 `index.js`，我们导入实例并调用了其方法。这样，如果我们不小心修改了实例中的值。这可能会导致意外行为，因为在整个应用程序中，实例是共享的，所以会影响到其它引用实例的地方。
 
-<Editor client:idle files={SampleCodes4} />
+<Editor testMode client:idle files={SampleCodes4} />
 
 #### 全局行为
 
